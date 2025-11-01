@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+  /* Center the form in the middle of the page */
+  .form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .form-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .form-container h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #222;
+  }
+
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .form-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+
+  .form-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .form-container button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+
+  .form-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .form-container a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="form-container">
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+</div>
+{% endblock %}

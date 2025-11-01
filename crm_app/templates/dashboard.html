@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <h2>Welcome, {{ user.first_name|default:user.username }}</h2>
+
+  <div class="card-container">
+    <div class="card companies-card">
+      <h3>Companies</h3>
+      <p>{{ company_count }}</p>
+    </div>
+
+    <div class="card contacts-card">
+      <h3>Contacts</h3>
+      <p>{{ contact_count }}</p>
+    </div>
+
+    <div class="card reports-card">
+      <h3>Reports</h3>
+      <p>{{ report_count }}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.dashboard-container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  background: linear-gradient(135deg, #007bff, #00b4d8);
+  color: white;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.companies-card {
+  background: linear-gradient(135deg, #007bff, #00b4d8);
+}
+.contacts-card {
+  background: linear-gradient(135deg, #28a745, #6dd5ed);
+}
+.reports-card {
+  background: linear-gradient(135deg, #17a2b8, #6dd5ed);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+</style>
+{% endblock %}

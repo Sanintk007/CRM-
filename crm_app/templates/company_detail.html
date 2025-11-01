@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+{% block title %}Company Details{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: #f4f7fb;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .company-container {
+    max-width: 850px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: #1e293b;
+    font-weight: 600;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: linear-gradient(135deg, #0056b3, #007bff);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  }
+
+  .btn-edit {
+    background: linear-gradient(135deg, #28a745, #00c851);
+  }
+
+  .btn-edit:hover {
+    background: linear-gradient(135deg, #218838, #28a745);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+  }
+
+  .company-info p {
+    font-size: 1.05rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .company-info strong {
+    color: #007bff;
+  }
+
+  .company-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .company-info a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  h3 {
+    margin-top: 50px;
+    font-weight: 600;
+    color: #0b46a4;
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    background: #f8faff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  ul li:hover {
+    background: #e8f2ff;
+    border-left: 4px solid #007bff;
+    transform: translateY(-2px);
+  }
+
+  ul li strong {
+    display: block;
+    font-size: 1.05rem;
+    color: #1e293b;
+  }
+
+  ul li span {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .company-container {
+      padding: 25px;
+      margin: 20px;
+    }
+    .btn-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+
+<div class="company-container">
+  <div class="btn-group">
+    <a class="btn btn-edit" href="{% url 'edit_company' company.id %}"> Edit Company</a>
+    <a class="btn" href="/contacts/add/?company={{ company.id }}">+ Add Contact</a>
+  </div>
+  <h2>{{ company.name }}</h2>{% extends 'base.html' %}
+{% block title %}Company Details{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: #f4f7fb;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .company-container {
+    max-width: 850px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 35px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: #1e293b;
+    font-weight: 600;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: linear-gradient(135deg, #0056b3, #007bff);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  }
+
+  .btn-edit {
+    background: linear-gradient(135deg, #28a745, #00c851);
+  }
+
+  .btn-edit:hover {
+    background: linear-gradient(135deg, #218838, #28a745);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+  }
+
+  .company-info p {
+    font-size: 1.05rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .company-info strong {
+    color: #007bff;
+  }
+
+  .company-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .company-info a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  h3 {
+    margin-top: 50px;
+    font-weight: 600;
+    color: #0b46a4;
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    background: #f8faff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  ul li:hover {
+    background: #e8f2ff;
+    border-left: 4px solid #007bff;
+    transform: translateY(-2px);
+  }
+
+  ul li strong {
+    display: block;
+    font-size: 1.05rem;
+    color: #1e293b;
+  }
+
+  ul li span {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .company-container {
+      padding: 25px;
+      margin: 20px;
+    }
+    .btn-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+
+<div class="company-container">
+  <div class="btn-group">
+    <a class="btn btn-edit" href="{% url 'edit_company' company.id %}"> Edit Company</a>
+    <a class="btn" href="/contacts/add/?company={{ company.id }}">+ Add Contact</a>
+  </div>
+  <h2>{{ company.name }}</h2>
+  <div class="company-info">
+    <p><strong>Address:</strong> {{ company.address }}</p>
+    <p><strong>Website:</strong> 
+      <a href="{{ company.website }}" target="_blank">{{ company.website }}</a>
+    </p>
+  </div>
+
+  <div class="contacts-section">
+    <h3>Contacts</h3>
+    <ul>
+      {% for contact in contacts %}
+        <li>
+          <strong>{{ contact.name }}</strong>
+          <span>{{ contact.email }}</span>
+        </li>
+      {% empty %}
+        <li>No contacts yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+  <div class="company-info">
+    <p><strong>Address:</strong> {{ company.address }}</p>
+    <p><strong>Website:</strong> 
+      <a href="{{ company.website }}" target="_blank">{{ company.website }}</a>
+    </p>
+  </div>
+
+  <div class="contacts-section">
+    <h3>Contacts</h3>
+    <ul>
+      {% for contact in contacts %}
+        <li>
+          <strong>{{ contact.name }}</strong>
+          <span>{{ contact.email }}</span>
+        </li>
+      {% empty %}
+        <li>No contacts yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

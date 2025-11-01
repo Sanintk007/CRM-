@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}Add Contact{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f5f7fa;
+    font-family: "Poppins", sans-serif;
+  }
+
+
+  .container {
+    background: ;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 40px;
+    position: relative;
+  }
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  form label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+  }
+
+  form input:focus,
+  form select:focus,
+  form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+    outline: none;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #00408d);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: #565e64;
+    transform: translateY(-2px);
+  }
+
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 25px 30px;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<div class="container mt-4">
+  <h2>Add New Contact</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex justify-content-between mt-3">
+      <button type="submit" class="btn btn-primary">Save Contact</button>
+      <a href="{% url 'contact_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

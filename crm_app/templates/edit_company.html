@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Edit Company{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm p-4 rounded-3">
+    <h2 class="mb-4 text-center text-primary">Edit Company Details</h2>
+    <form method="post" class="needs-validation" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <button type="submit" class="btn btn-success px-4">Save Changes</button>
+        <a href="{% url 'company_detail' company.id %}" class="btn btn-secondary px-4">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

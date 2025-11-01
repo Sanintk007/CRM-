@@ -1,0 +1,33 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CRM Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="nav-logo">CRM</a>
+      <ul class="nav-links">
+        {% if user.is_authenticated %}
+         <li><a href="/home/">Home</a></li>
+          <li><a href="/companies/">Companies</a></li>
+          <li><a href="/contacts/">Contacts</a></li>
+          <li><a href="/reports/">Reports</a></li>
+          <li><a href="/logout/">Logout</a></li>
+        {% else %}
+          <li><a href="/login/">Login</a></li>
+          <li><a href="/signup/">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container main">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
